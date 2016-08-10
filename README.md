@@ -2,6 +2,7 @@
 Adds personalized buttons to the battledome which apply a preset weapon/ability configuration.
 
 <b>INSTRUCTIONS</b>
+
 The faerie ability URLs are listed below the main() function.
 For each item you have equipped, find its image URL. For quick reference, I suggest pasting them below with the faerie abilities.
 
