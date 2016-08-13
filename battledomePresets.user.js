@@ -2,10 +2,11 @@
 // @author         friendly-trenchcoat
 // @name           Battledome - Auto-Equip Buttons
 // @description    Adds buttons to the battledome which apply a preset weapon/ability configuration.
-// @version        1
+// @version        2
 // @include        http://www.neopets.com/dome/arena.phtml
 // @require	       http://code.jquery.com/jquery-latest.min.js
 // ==/UserScript==
+/*jshint multistr: true */
 
 /*
 - INSTRUCTIONS -
@@ -19,8 +20,13 @@ You may add more buttons--just be sure to give each one a unique id (defaultset4
 */
 
 function main(){   // CUSTOMIZE INSIDE HERE
-    $('#statusmsg').before('<br><center> <button id="defaultset1" class>Set 1</button> <button id="defaultset2" class>Set 2</button> <button id="defaultset3" class>Set 3</button> </center>');
-
+    $('#statusmsg').before(' \
+        <center><div id="bdSets"> \
+            <button id="defaultset1" class="icon">SET 1</button> \
+            <button id="defaultset2" class="icon">SET 2</button> \
+            <button id="defaultset3" class="icon">SET 3</button> \
+        </div></center> \
+    ');
     $( '#defaultset1' ).on( 'click', function( e ) { // shuriken 1, yooyu 1, lense flare
         e1url = "'http://images.neopets.com/items/shw_shuriken.gif'";                              // equipment slot 1
         e2url = "'http://images.neopets.com/items/gif_acy18_knu_duster.gif'";                      // equipment slot 2
@@ -84,6 +90,30 @@ http://images.neopets.com/bd2/abilities/0035_py72ri38gd_summonmonoceraptor/thumb
 http://images.neopets.com/bd2/abilities/0037_tgyuy43ui0_esophagorstench/thumb_37.png
 */
 
+// STYLING
+var css = document.createElement("style");
+css.type = "text/css";
+css.innerHTML = " \
+#bdSets { width: 910px; height: 39px; margin: auto auto 10px auto; background-image: url(http://images.neopets.com/dome/pages/nav_bg.png); } \
+#bdSets button.icon { \
+        height: 39px; \
+        width: 70px; \
+        border: 0px; \
+        display: inline-block; \
+        cursor: pointer;  \
+        background: url('http://i.imgur.com/tDWYf2D.png'); \
+        background-position: 0px 2px; \
+        font-size: 130%; \
+        font-style: italic; \
+        font-family: 'Impact', Ariel, sans-seri; \
+        letter-spacing: 1px; \
+        color: #fff; \
+        text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -2px 2px 0 #000, 1px 1px 0 #000; \
+} \
+#bdSets button.icon:hover { background-position: 0px -39px; } ";
+document.body.appendChild(css);
+
+// FUNCTIONS
 var e1url, e2url, aurl;
 var graphic = "opacity: 1; background-image: url(%s); background-size: 60px 60px; background-position: 0px 0px;";
 function setAttack(e1, n1, e2, n2, a){
