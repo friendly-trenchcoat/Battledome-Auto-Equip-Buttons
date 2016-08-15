@@ -123,8 +123,8 @@ function setAttack(e1, n1, e2, n2, a){
     $('#p1am').find("div").attr("style", graphic.replace("%s", a));
 
     // Change values
-    $('#p1e1').attr("value", $("img[src="+e1+"]").eq(0).attr("id"));
-    $('#p1e2').attr("value", $("img[src="+e2+"]").eq(0).attr("id"));
+    $('#p1e1').attr("value", $("img[src="+e1+"]").eq(n1).attr("id"));
+    $('#p1e2').attr("value", $("img[src="+e2+"]").eq(n2).attr("id"));
     $('#p1a').attr("value", a.match(/thumb_([0-9]*).png/)[1]);
 }
 var intervalId = setInterval(function() {  // wait until page has loaded
